@@ -1,0 +1,68 @@
+<main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <div class="container">
+        <div class="card login-card">
+            <div class="row no-gutters">
+                <div class="col-md-5">
+                    <img src="assets/pic/login.jpg" alt="login" class="login-card-img">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <div class="brand-wrapper">
+                            <h1>Login</h1>
+                        </div>
+
+                        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+
+                            <div>
+                                <input type="text" id="username" placeholder="Username" class="form-control"
+                                    formControlName="username" required>
+
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="password" placeholder="Password" class="form-control"
+                                    formControlName="password" required>
+                            </div>
+
+
+
+                            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase  mb-2"
+                                type="submit" [disabled]="!loginForm.valid">Login</button>
+
+                        </form>
+
+
+                        <!--
+                         <form (ngSubmit)="onLogin()">
+
+                            <div>
+                                <input type="text" id="username" placeholder="Username" class="form-control"
+                                    [formControl]="username" required>
+
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="password" placeholder="Password" class="form-control"
+                                    [formControl]="password" required>
+                            </div>
+
+
+
+                            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase  mb-2"
+                                type="submit" [disabled]="!username.valid" [disabled]="!password.valid">Login</button>
+
+                        </form>
+                        -->
+
+
+
+                        <p class="login-card-footer-text">Don't have an account? <a routerLink="/register"
+                                class="text-reset">Register here</a></p>
+                        <nav class="login-card-footer-nav">
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
