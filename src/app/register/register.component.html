@@ -9,7 +9,7 @@
                         </div>
 
 
-                        <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+                        <form [formGroup]="registerForm">
 
                             <div>
                                 <input type="username" id="username" class="form-control" placeholder="Username"
@@ -27,7 +27,8 @@
 
                             </div>
                             <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase  mb-2"
-                                type="submit" [disabled]="!registerForm.valid">Register</button>
+                                (ngSubmit)="onRegister()" (click)="onRegister()" type="submit"
+                                [disabled]="!registerForm.valid">Register</button>
 
                         </form>
 
