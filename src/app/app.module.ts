@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';           //posthoz kell
+
 
 
 import { appRoutingModule } from './app.routing';
@@ -27,6 +29,7 @@ import { LandingComponent } from './landing';
     FormsModule,
     appRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
