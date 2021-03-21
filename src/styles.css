@@ -118,5 +118,12 @@
   height: auto;
   padding-left: 20px;
   padding-top: 20px;
+  position: relative;
 
 }
+.logout{
+  position: absolute;
+  top: 20px;
+  right: 0;
+  padding-right: 20px;
+ }              

@@ -36,11 +36,15 @@ export class LandingComponent /*implements OnInit*/ {
     */
     selectedFile = null;
 
+    constructor(private http: HttpClient) {
+
+    }
+
     onFileSelected(event) {
 
         this.selectedFile = event.target.files[0];
     }
     onUpload() {
-
+        //this.http.post('')
     }
 }
