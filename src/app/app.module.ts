@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';           //posthoz kell
 
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { initializeKeycloak } from '../app/utility/app.init'
+//import { initializeKeycloak } from '../app/utility/app.init'                        //keycloak
 
 import { appRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
@@ -35,12 +35,14 @@ import { LandingComponent } from './landing';
     KeycloakAngularModule
   ],
   providers: [
+    /*
     {
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
       multi: true,
       deps: [KeycloakService],
     },
+    */ //keycloak
   ],
   bootstrap: [AppComponent]
 })
