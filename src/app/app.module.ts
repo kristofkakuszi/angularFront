@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup } from "@angular/forms";
+
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';           //posthoz kell
 
-
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { initializeKeycloak } from '../app/utility/app.init'
 
 import { appRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
@@ -29,9 +31,17 @@ import { LandingComponent } from './landing';
     FormsModule,
     appRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    KeycloakAngularModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

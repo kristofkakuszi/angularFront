@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({ templateUrl: 'landing.component.html' })
-export class LandingComponent /*implements OnInit*/ {
+export class LandingComponent implements OnInit {
 
     /*
     SERVER_URL = "http://localhost:4200/landing";
@@ -34,6 +35,7 @@ export class LandingComponent /*implements OnInit*/ {
         );
     }
     */
+    /*
     selectedFile = null;
 
     constructor(private http: HttpClient) {
@@ -44,7 +46,26 @@ export class LandingComponent /*implements OnInit*/ {
 
         this.selectedFile = event.target.files[0];
     }
+    
     onUpload() {
         //this.http.post('')
+    }
+
+    */
+
+    user = '';
+
+    constructor(private keycloakService: KeycloakService) { }
+
+    ngOnInit(): void {
+        this.initializeUserOptions();
+    }
+
+    private initializeUserOptions(): void {
+        this.user = this.keycloakService.getUsername();
+    }
+
+    logout(): void {
+        this.keycloakService.logout('http://localhost:4200');
     }
 }

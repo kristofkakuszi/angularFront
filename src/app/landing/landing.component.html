@@ -1,5 +1,7 @@
 <div class="doboz">
 
+    <p>Hi {{user}}</p>
+
     <h2>Upload your pictures here</h2>
 
     <!--
@@ -21,8 +23,11 @@
     </div>
 -->
 
-    <input type="file" (change)="onFileSelected($event)">
-    <button type="button" (click)="onUpload">Upload</button>
+    <!--<input type="file" (change)="onFileSelected($event)"> ez volt itt csak keycloaknal sir-->
+    <input type="file">
+
+    <!--<button type="button" (click)="onUpload">Upload</button>-->
+    <button type="button">Upload</button>
 
     <!--
     <div>
@@ -37,7 +42,13 @@
     </div>
     -->
     <div class="logout">
-        <a routerLink="/home"><button type="button" class="btn btn-info btn-rounded">Log out</button></a>
+        <a routerLink="/home"><button (click)="logout()" type="button" class="btn btn-info btn-rounded">Log
+
+                <!--majd fgv kell hozza-->
+
+
+                out
+            </button></a>
     </div>
 
 
