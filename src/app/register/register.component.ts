@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
                 this.router.navigate(['login']);
             }
         )
-
         //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
         console.warn(this.registerForm.value)
     }

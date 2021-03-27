@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';           //posthoz kell
 
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-//import { initializeKeycloak } from '../app/utility/app.init'                        //keycloak
+//import { initializeKeycloak } from '../app/utility/app.init'
 
 import { appRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
@@ -32,7 +32,7 @@ import { LandingComponent } from './landing';
     appRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    KeycloakAngularModule
+    //KeycloakAngularModule
   ],
   providers: [
     /*
@@ -42,7 +42,7 @@ import { LandingComponent } from './landing';
       multi: true,
       deps: [KeycloakService],
     },
-    */ //keycloak
+    */
   ],
   bootstrap: [AppComponent]
 })

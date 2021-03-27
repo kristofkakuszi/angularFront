@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
 
 @Component({ templateUrl: 'landing.component.html' })
-export class LandingComponent implements OnInit {
+export class LandingComponent { //export class LandingComponent implements OnInit {
 
     /*
     SERVER_URL = "http://localhost:4200/landing";
@@ -53,6 +53,7 @@ export class LandingComponent implements OnInit {
 
     */
 
+    /*
     user = '';
 
     constructor(private keycloakService: KeycloakService) { }
@@ -66,6 +67,7 @@ export class LandingComponent implements OnInit {
     }
 
     logout(): void {
-        this.keycloakService.logout('http://localhost:4200');
+        this.keycloakService.logout('http://localhost:4200/');
     }
+    */
 }

@@ -1,3 +1,4 @@
+/*
 import { Injectable } from '@angular/core';
 import {
     ActivatedRouteSnapshot,
@@ -40,4 +41,4 @@ export class AuthGuard extends KeycloakAuthGuard {
         return requiredRoles.every((role) => this.roles.includes(role));
     }
 }
-
+*/
