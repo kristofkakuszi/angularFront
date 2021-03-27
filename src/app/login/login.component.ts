@@ -35,6 +35,14 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }
+        this.httpService.post("/onLogin", this.loginForm.value).subscribe(
+            (status) => {
+                console.warn(status);
+                this.router.navigate(['landing']);
+            }
+        )
+        //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+        console.warn(this.loginForm.value)
 
         /*
         loginForm = new FormGroup({
