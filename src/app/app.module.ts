@@ -16,6 +16,9 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { LandingComponent } from './landing';
+import { AuthComponent } from './auth/auth.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { HeroService } from './hero.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { LandingComponent } from './landing';
     LoginComponent,
     RegisterComponent,
     LandingComponent,
+    AuthComponent,
 
   ],
   imports: [
@@ -35,14 +39,13 @@ import { LandingComponent } from './landing';
     //KeycloakAngularModule
   ],
   providers: [
-    /*
+    HeroService,
     {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true,
-      deps: [KeycloakService],
     },
-    */
+
   ],
   bootstrap: [AppComponent]
 })

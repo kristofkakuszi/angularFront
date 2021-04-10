@@ -1,73 +1,71 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, RequiredValidator, Validators } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
+import { Router } from '@angular/router';
+
 
 @Component({ templateUrl: 'landing.component.html' })
-export class LandingComponent { //export class LandingComponent implements OnInit {
+export class LandingComponent {
+    //implements OnInit
 
-    /*
-    SERVER_URL = "http://localhost:4200/landing";
-    uploadForm: FormGroup;
-    constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { }
+    //url; //Angular 8
+    url: any; //Angular 11, for stricter type
+    msg = "";
 
-    ngOnInit() {
-        this.uploadForm = this.formBuilder.group({
-            profile: ['']
-        });
-    }
+    //selectFile(event) { //Angular 8
+    selectFile(event: any) { //Angular 11, for stricter type
+        if (!event.target.files[0] || event.target.files[0].length == 0) {
+            this.msg = 'You must select an image';
+            return;
+        }
 
-    onFileSelect(event) {
-        if (event.target.files.length > 0) {
-            const file = event.target.files[0];
-            this.uploadForm.get('profile').setValue(file);
+        var mimeType = event.target.files[0].type;
+
+        if (mimeType.match(/image\/*/) == null) {
+            this.msg = "Only images are supported";
+            return;
+        }
+
+        var reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+
+        reader.onload = (_event) => {
+            this.msg = "";
+            this.url = reader.result;
         }
     }
 
-    onSubmit() {
-        const formData = new FormData();
-        formData.append('file', this.uploadForm.get('profile').value);
 
-        this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
-            (res) => console.log(res),
-            (err) => console.log(err)
-        );
-    }
-    */
     /*
-    selectedFile = null;
 
-    constructor(private http: HttpClient) {
+    uploadForm: FormGroup;
 
+    constructor(private httpService: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
+
+
+    ngOnInit() {
+        this.uploadForm = this.formBuilder.group({
+            inputFile: ['', Validators.required]
+        });
     }
 
-    onFileSelected(event) {
 
-        this.selectedFile = event.target.files[0];
+
+    onFileChanged(event) {
+        const file = event.target.files[0]
     }
-    
+
     onUpload() {
-        //this.http.post('')
-    }
 
-    */
-
-    /*
-    user = '';
-
-    constructor(private keycloakService: KeycloakService) { }
-
-    ngOnInit(): void {
-        this.initializeUserOptions();
-    }
-
-    private initializeUserOptions(): void {
-        this.user = this.keycloakService.getUsername();
-    }
-
-    logout(): void {
-        this.keycloakService.logout('http://localhost:4200/');
+        this.httpService.post('/upload', this.uploadForm.value).subscribe(
+            (status: any) => {
+                console.warn(status);
+                console.log("megynomtad")
+            }
+        )
+        console.log(this.uploadForm.value)
     }
     */
 }

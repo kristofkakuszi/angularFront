@@ -5,6 +5,7 @@ import { Router } from '@angular/router';                                       
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";              //ez is kell ahhoz hogy mukodjon a post
 
 import { ConfirmedValidator } from './confirmed.validator';
+//import { timingSafeEqual } from 'crypto';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class RegisterComponent implements OnInit {
     //ez a ketto
     registerForm: FormGroup;
     submitted = false;
+    //error = false;
 
 
     //innentol
@@ -35,6 +37,7 @@ export class RegisterComponent implements OnInit {
 
     onRegister() {
         this.submitted = true;
+        //this.error = false;
 
 
         // stop here if form is invalid
@@ -43,7 +46,7 @@ export class RegisterComponent implements OnInit {
         }
 
         this.httpService.post("/onRegister", this.registerForm.value).subscribe(
-            (status) => {
+            (status: any) => {
                 console.warn(status);
                 this.router.navigate(['login']);
             }
@@ -52,6 +55,20 @@ export class RegisterComponent implements OnInit {
         console.warn(this.registerForm.value)
     }
 
+
+
+    /*
+      this.httpService.post("/onRegister", this.registerForm.value).subscribe((status) => {
+            if (status.result == false) {
+                alert("letezik mar ilyen user");
+            }
+            else {
+                alert("rendben van nincs ilyen mehetsz");
+            }
+            console.warn(status);
+            this.router.navigate(['login']);
+        });
+        */
 
 
 

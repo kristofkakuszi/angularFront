@@ -8,9 +8,4 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
     }
-
-    showLanding(): void {
-        this.router.navigateByUrl('/landing');
-    }
-
 }

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 
 import { ConfirmedValidator } from '../register/confirmed.validator';
+import { HeroService } from '../hero.service';
 
 
 @Component({
@@ -28,6 +29,8 @@ export class LoginComponent implements OnInit {
         });
     }
     get f() { return this.loginForm.controls; }
+
+
 
     onLogin() {
         this.submitted = true;

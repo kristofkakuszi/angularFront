@@ -1,33 +1,17 @@
 <div class="doboz">
 
-    <!--<p>Hi {{user}}</p> -->
-
     <h2>Upload your pictures here</h2>
 
-    <!--
-    <div class="form-group LandingPage1">
-        <label for="name" class="name">Name:</label>
-        <br>
-        <div class="form-group col-sm-2">
-            <input type="name" class="form-control" id="name" placeholder="">
-        </div>
 
-        <p>Choose File:</p>
-        <p>Lehet nem is kell name</p>
-        <label for="file">Choose File</label>
-        <input type="file" id="file" name="inputFile" accept=".png,.jpg,.jpeg">
 
-        <div class="mt-3">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
--->
 
-    <!--<input type="file" (change)="onFileSelected($event)"> ez volt itt csak keycloaknal sir-->
-    <input type="file">
-
-    <!--<button type="button" (click)="onUpload">Upload</button>-->
+    <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+    <div><img [src]="url" *ngIf="url"></div>
+    <p>
+        <input type="file" (change)="selectFile($event)">
+    </p>
     <button type="button">Upload</button>
+
 
     <!--
     <div>
@@ -40,6 +24,8 @@
             </div>
         </form>
     </div>
+
+    accept=".png,.jpg,.jpeg"
     -->
     <div class="logout">
         <a routerLink="/home"><button type="button" class="btn btn-info btn-rounded">Log out
