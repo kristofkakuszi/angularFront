@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';                                                       //ez illetve
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";              //ez is kell ahhoz hogy mukodjon a post
+import { HttpClient } from "@angular/common/http";              //ez is kell ahhoz hogy mukodjon a post
 
 import { ConfirmedValidator } from './confirmed.validator';
-//import { timingSafeEqual } from 'crypto';
+
 
 
 @Component({

@@ -2,15 +2,37 @@
 
     <h2>Upload your pictures here</h2>
 
+    <!--
+    <input type="file" name="file" (change)="onFileSelected($event)">
+    <button type="submit" (click)="Upload()">Submit</button>
+    -->
 
 
+    <form [formGroup]="uploadForm" (ngSubmit)="upload()">
 
-    <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
-    <div><img [src]="url" *ngIf="url"></div>
-    <p>
-        <input type="file" (change)="selectFile($event)">
-    </p>
-    <button type="button">Upload</button>
+        <div class="preview" *ngIf="imgFile">
+            <img [src]="imgFile" style="width:400px; height:250px">
+        </div>
+
+        <div class="form-group">
+            <label for="name">File Name</label>
+            <input class="form-control" id="file" formControlName="file" type="text">
+            <div *ngIf="uf.name.touched && uf.name.invalid" class="alert alert-danger">
+                <div *ngIf="uf.name.errors.required">Name is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="file">File</label>
+            <input type="file" class="form-control" id="file" formControlName="file" (change)="onImageChange($event)">
+            <div *ngIf="uf.file.touched && uf.file.invalid" class="alert alert-danger">
+                <div *ngIf="uf.file.errors.required">Image file is required.</div>
+            </div>
+        </div>
+
+        <button class="btn btn-success" type="submit">Upload File</button>
+
+    </form>
 
 
     <!--
@@ -32,6 +54,9 @@
             </button></a>
     </div>
 
+    <!--
+        logout gombra function
+    -->
 
 
 

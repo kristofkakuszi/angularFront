@@ -1,71 +1,67 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, RequiredValidator, Validators } from "@angular/forms";
-import { HttpClientModule } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { KeycloakService } from 'keycloak-angular';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({ templateUrl: 'landing.component.html' })
 export class LandingComponent {
-    //implements OnInit
 
-    //url; //Angular 8
-    url: any; //Angular 11, for stricter type
-    msg = "";
+    imgFile: string;
 
-    //selectFile(event) { //Angular 8
-    selectFile(event: any) { //Angular 11, for stricter type
-        if (!event.target.files[0] || event.target.files[0].length == 0) {
-            this.msg = 'You must select an image';
-            return;
-        }
+    uploadForm = new FormGroup({
+        name: new FormControl('', [Validators.required]),
+        file: new FormControl('', [Validators.required]),
+        imgSrc: new FormControl('', [Validators.required])
+    });
 
-        var mimeType = event.target.files[0].type;
+    constructor(private httpService: HttpClient) { }
 
-        if (mimeType.match(/image\/*/) == null) {
-            this.msg = "Only images are supported";
-            return;
-        }
+    get uf() {
+        return this.uploadForm.controls;
+    }
 
-        var reader = new FileReader();
-        reader.readAsDataURL(event.target.files[0]);
+    onImageChange(e) {
+        const reader = new FileReader();
 
-        reader.onload = (_event) => {
-            this.msg = "";
-            this.url = reader.result;
+        if (e.target.files && e.target.files.length) {
+            const [file] = e.target.files;
+            reader.readAsDataURL(file);
+
+            reader.onload = () => {
+                this.imgFile = reader.result as string;
+                this.uploadForm.patchValue({
+                    imgSrc: reader.result
+                });
+
+            };
         }
     }
 
-
+    upload() {
+        console.log(this.uploadForm.value);
+        this.httpService.post("/onUpload", this.uploadForm.value)
+            .subscribe(response => {
+                console.warn(this.uploadForm.value)
+            })
+    }
     /*
+    selectedFile: File = null;
 
-    uploadForm: FormGroup;
+    constructor(private httpService: HttpClient) { }
 
-    constructor(private httpService: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
+    onFileSelected(event) {
+        this.selectedFile = <File>event.target.files[0];
+    }
 
-
-    ngOnInit() {
-        this.uploadForm = this.formBuilder.group({
-            inputFile: ['', Validators.required]
+    Upload() {
+        const fd = new FormData();
+        fd.append('image', this.selectedFile, this.selectedFile.name);
+        this.httpService.post("/onUpload", this.selectedFile).subscribe(res => {
+            console.log(res);
+            console.warn(this.selectedFile);
         });
     }
-
-
-
-    onFileChanged(event) {
-        const file = event.target.files[0]
-    }
-
-    onUpload() {
-
-        this.httpService.post('/upload', this.uploadForm.value).subscribe(
-            (status: any) => {
-                console.warn(status);
-                console.log("megynomtad")
-            }
-        )
-        console.log(this.uploadForm.value)
-    }
+    //this.selectedFile ha elfogad binaryt onUpload után (fd helyett)
     */
+
 }
