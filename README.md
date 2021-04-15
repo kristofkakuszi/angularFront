@@ -1,1 +1,1 @@
-1.0 form group van benne mind a loginnal es a regisztracional
+
