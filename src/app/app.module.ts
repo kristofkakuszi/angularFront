@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';           //posthoz kell
 
@@ -36,6 +39,10 @@ import { HeroService } from './hero.service';
     appRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    FileUploadModule
+
     //KeycloakAngularModule
   ],
   providers: [

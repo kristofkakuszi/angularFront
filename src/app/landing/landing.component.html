@@ -2,53 +2,29 @@
 
     <h2>Upload your pictures here</h2>
 
-    <!--
-    <input type="file" name="file" (change)="onFileSelected($event)">
-    <button type="submit" (click)="Upload()">Submit</button>
-    -->
+    <label>Name:</label>
+    <input type="text" id="name">
 
 
-    <form [formGroup]="uploadForm" (ngSubmit)="upload()">
 
-        <div class="preview" *ngIf="imgFile">
-            <img [src]="imgFile" style="width:400px; height:250px">
-        </div>
+    <input type="file" class="file-input" multiple onchange="console.log(event.target.files)"
+        (change)="onFileSelected($event)" enctype="multipart/form-data" #fileUpload>
 
-        <div class="form-group">
-            <label for="name">File Name</label>
-            <input class="form-control" id="file" formControlName="file" type="text">
-            <div *ngIf="uf.name.touched && uf.name.invalid" class="alert alert-danger">
-                <div *ngIf="uf.name.errors.required">Name is required.</div>
-            </div>
-        </div>
+    <div class="file-upload">
 
-        <div class="form-group">
-            <label for="file">File</label>
-            <input type="file" class="form-control" id="file" formControlName="file" (change)="onImageChange($event)">
-            <div *ngIf="uf.file.touched && uf.file.invalid" class="alert alert-danger">
-                <div *ngIf="uf.file.errors.required">Image file is required.</div>
-            </div>
-        </div>
+        {{fileName || "No file uploaded yet."}}
 
-        <button class="btn btn-success" type="submit">Upload File</button>
+        <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+            <mat-icon>attach_file</mat-icon>
+        </button>
 
-    </form>
-
-
-    <!--
-    <div>
-        <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-            <div>
-                <input type="file" name="profile" (change)="onFileSelect($event)" />
-            </div>
-            <div>
-                <button type="submit">Upload</button>
-            </div>
-        </form>
     </div>
 
-    accept=".png,.jpg,.jpeg"
+    <!-- 
+        <file-upload requiredFileType="image/png"></file-upload>
     -->
+
+
     <div class="logout">
         <a routerLink="/home"><button type="button" class="btn btn-info btn-rounded">Log out
             </button></a>
@@ -57,9 +33,5 @@
     <!--
         logout gombra function
     -->
-
-
-
-
 
 </div>
