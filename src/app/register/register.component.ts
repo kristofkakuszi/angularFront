@@ -6,7 +6,6 @@ import { HttpClient } from "@angular/common/http";              //ez is kell ahh
 import { ConfirmedValidator } from './confirmed.validator';
 
 
-
 @Component({
     templateUrl: 'register.component.html'
 })
@@ -50,9 +49,10 @@ export class RegisterComponent implements OnInit {
                 this.router.navigate(['login']);
             }
         )
-        //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+        alert('Sikeres Regisztárció!\n\n')
         console.warn(this.registerForm.value)
     }
+
 
 
 

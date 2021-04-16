@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { FileUploader } from 'ng2-file-upload';
-
-
-
 
 
 @Component({
@@ -16,7 +11,7 @@ export class LandingComponent {
 
     fileName = '';
 
-    constructor(private http: HttpClient) { }
+    constructor(private httpService: HttpClient) { }
 
     onFileSelected(event) {
 
@@ -30,7 +25,7 @@ export class LandingComponent {
 
             formData.append("thumbnail", file);
 
-            const upload$ = this.http.post("/onUpload", formData);
+            const upload$ = this.httpService.post("/onUpload", formData);
 
             upload$.subscribe();
         }

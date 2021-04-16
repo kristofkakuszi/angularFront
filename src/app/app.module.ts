@@ -46,12 +46,12 @@ import { HeroService } from './hero.service';
     //KeycloakAngularModule
   ],
   providers: [
-    HeroService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
+    //HeroService,
+    //{
+    //provide: HTTP_INTERCEPTORS,
+    //useClass: AuthInterceptor,
+    //multi: true,
+    //},
 
   ],
   bootstrap: [AppComponent]
