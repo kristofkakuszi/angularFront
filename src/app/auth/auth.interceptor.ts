@@ -27,3 +27,15 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+//felesleges mappa yet

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HeroService } from '../hero.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +13,7 @@ export class LandingComponent {
 
     fileName = '';
 
-    constructor(private httpService: HttpClient) { }
+    constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router) { }
 
     onFileSelected(event) {
 
@@ -27,8 +29,17 @@ export class LandingComponent {
 
             const upload$ = this.httpService.post("/onUpload", formData);
 
-            upload$.subscribe();
+            upload$.subscribe(
+                (info: HttpResponse<any>) => {
+                    alert("Done");
+                },
+                (error: HttpErrorResponse) => {
+                    if (error.status == 401) {
+                        this.heroService.token = "";
+                        this.router.navigate(['landing']);
+                    }
+                }
+            );
         }
     }
-
 }

@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormBuilder } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from "@angular/common/http";
 
 import { ConfirmedValidator } from '../register/confirmed.validator';
 import { HeroService } from '../hero.service';
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     submitted = false;
 
-    constructor(private httpService: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
+    constructor(private httpService: HttpClient, private router: Router, private formBuilder: FormBuilder, private heroService: HeroService) { }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
@@ -39,37 +39,23 @@ export class LoginComponent implements OnInit {
             return;
         }
         this.httpService.post("/onLogin", this.loginForm.value).subscribe(
+            (status: HttpResponse<any>) => {
+                if (status.status == 200) {
+                    this.heroService.token = status.body.token;
+                    this.router.navigate(['landing']);
+                }
+            },
+            (error: HttpErrorResponse) => {
+                alert(error.message);
+            }
+            /*
             (status) => {
                 console.warn(status);
                 this.router.navigate(['landing']);
             }
+            */
         )
-        //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+        //alert('Sikeres Bejelentkezés!\n\n')
         console.warn(this.loginForm.value)
-
-        /*
-        loginForm = new FormGroup({
-    
-            username: new FormControl(''),
-            password: new FormControl(''),
-        });
-    
-        onLogin() {
-            console.warn(this.loginForm.value)
-        }
-        */
-
-        /*
-        username = new FormControl('');
-    
-        password = new FormControl('');
-    
-        onLogin() {
-            console.warn(this.username.value)
-            console.warn(this.password.value)
-        }
-        */
-
-
     }
 }

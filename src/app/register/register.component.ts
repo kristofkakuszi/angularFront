@@ -47,9 +47,10 @@ export class RegisterComponent implements OnInit {
             (status: any) => {
                 console.warn(status);
                 this.router.navigate(['login']);
+                alert('Sikeres Regisztárció!\n\n')
             }
         )
-        alert('Sikeres Regisztárció!\n\n')
+        //alert('Sikeres Regisztárció!\n\n')
         console.warn(this.registerForm.value)
     }
 
