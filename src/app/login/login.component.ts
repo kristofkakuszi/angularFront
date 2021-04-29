@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
         }
         this.httpService.post("/onLogin", this.loginForm.value).subscribe(
             (status: HttpResponse<any>) => {
-                if (status.status == 200) {
-                    this.heroService.token = status.body.token;
+                if (status['result']) {
+                    this.heroService.token = status['token'];
                     this.router.navigate(['landing']);
                 }
             },
@@ -56,6 +56,6 @@ export class LoginComponent implements OnInit {
             */
         )
         //alert('Sikeres Bejelentkezés!\n\n')
-        console.warn(this.loginForm.value)
+        console.warn(this.loginForm.value);
     }
 }

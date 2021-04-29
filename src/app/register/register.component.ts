@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
             }
         )
         //alert('Sikeres Regisztárció!\n\n')
-        console.warn(this.registerForm.value)
+        console.warn(this.registerForm.value);
     }
 
 
