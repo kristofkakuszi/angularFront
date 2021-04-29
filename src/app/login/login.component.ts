@@ -43,10 +43,12 @@ export class LoginComponent implements OnInit {
                 if (status['result']) {
                     this.heroService.token = status['token'];
                     this.router.navigate(['landing']);
+                    alert('Sikeres Bejelentkezés!\n\n')
                 }
             },
             (error: HttpErrorResponse) => {
-                alert(error.message);
+                alert("nem jo nev vagy jelszo");
+                //alert(error.message);
             }
             /*
             (status) => {

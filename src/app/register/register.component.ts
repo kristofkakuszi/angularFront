@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';                                                       //ez illetve
-import { HttpClient } from "@angular/common/http";              //ez is kell ahhoz hogy mukodjon a post
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";              //ez is kell ahhoz hogy mukodjon a post
 
 import { ConfirmedValidator } from './confirmed.validator';
 
@@ -48,6 +48,10 @@ export class RegisterComponent implements OnInit {
                 console.warn(status);
                 this.router.navigate(['login']);
                 alert('Sikeres Regisztárció!\n\n')
+            },
+            (error: HttpErrorResponse) => {
+                alert("mar letezo felhasznalo");
+                //alert(error.message);
             }
         )
         //alert('Sikeres Regisztárció!\n\n')
