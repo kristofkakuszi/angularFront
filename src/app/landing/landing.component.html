@@ -6,8 +6,6 @@
     <input type="text" id="name" [(ngModel)]="fileName" />-->
 
 
-
-
     <input type="file" class="file-input" name="file" multiple onchange="console.log(event.target.files)"
         (change)="onFileSelected($event)" enctype="multipart/form-data" #fileUpload>
 
@@ -25,7 +23,6 @@
         <file-upload requiredFileType="image/png"></file-upload>
     -->
 
-
     <div class="logout">
         <a routerLink="/home"><button type="button" class="btn btn-info btn-rounded">Log out
             </button></a>
@@ -34,5 +31,21 @@
     <!--
         logout gombra function
     -->
+</div>
 
+<div class="gallery">
+    <div class="row">
+        <div class="col">
+            <h4 id="cim">Képek</h4>
+        </div>
+        <div class="col">
+            <h4 id="cim">Arcok</h4>
+        </div>
+        <div class="col">
+            <h4 id="cim">Rendszámok</h4>
+        </div>
+        <div class="col">
+            <h4 id="cim">Szövegek</h4>
+        </div>
+    </div>
 </div>
