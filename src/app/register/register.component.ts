@@ -11,13 +11,9 @@ import { ConfirmedValidator } from './confirmed.validator';
 })
 export class RegisterComponent implements OnInit {
 
-    //ez a ketto
     registerForm: FormGroup;
     submitted = false;
-    //error = false;
 
-
-    //innentol
     constructor(private httpService: HttpClient, private router: Router, private formBuilder: FormBuilder) { }
 
 
@@ -57,10 +53,6 @@ export class RegisterComponent implements OnInit {
         //alert('Sikeres Regisztárció!\n\n')
         console.warn(this.registerForm.value);
     }
-
-
-
-
     /*
       this.httpService.post("/onRegister", this.registerForm.value).subscribe((status) => {
             if (status.result == false) {

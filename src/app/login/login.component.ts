@@ -50,12 +50,6 @@ export class LoginComponent implements OnInit {
                 alert("nem jo nev vagy jelszo");
                 //alert(error.message);
             }
-            /*
-            (status) => {
-                console.warn(status);
-                this.router.navigate(['landing']);
-            }
-            */
         )
         //alert('Sikeres Bejelentkezés!\n\n')
         console.warn(this.loginForm.value);

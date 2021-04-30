@@ -24,9 +24,11 @@
     -->
 
     <div class="logout">
-        <a routerLink="/home"><button type="button" class="btn btn-info btn-rounded">Log out
-            </button></a>
+        <a routerLink="/home">
+            <button (click)="onLogout()" type="button" class="btn btn-info btn-rounded">Log out</button>
+        </a>
     </div>
+
 
     <!--
         logout gombra function

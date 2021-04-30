@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HeroService } from '../hero.service';
@@ -11,13 +11,24 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent {
 
+
     fileName = '';
 
     constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router) { }
 
+
+    onLogout() {
+        console.warn(this.heroService.token);
+        this.heroService.token = "";
+        console.warn(this.heroService.token);
+    }
+
+
     onFileSelected(event) {
 
         const file: File = event.target.files[0];
+
+        console.warn(this.heroService.token);
 
         if (file) {
 
