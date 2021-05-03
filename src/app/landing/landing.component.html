@@ -2,23 +2,33 @@
 
     <h2>Picture upload</h2>
 
-    <!-- <label for="text">Name:</label><br>
-    <input type="text" id="name" [(ngModel)]="fileName" />-->
+    <form [formGroup]="uploadForm" (ngSubmit)="upload()">
+        <div>
+            <label for="text">Name:</label><br>
+            <input type="text" id="name" class="form-control" formControlName="name"
+                [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+        </div>
+    </form>
 
+    <!--
+    <label for="text">Name:</label><br>
+    <input type="text" id="name" [(ngModel)]="fileName" />
+    <input type="text" id="name" [(ngModel)]="fileName" />
+    -->
 
     <input type="file" class="file-input" name="file" multiple onchange="console.log(event.target.files)"
-        (change)="onFileSelected($event)" enctype="multipart/form-data" #fileUpload>
+        (change)="onFileSelected($event)" accept=".jpg, .png" enctype="multipart/form-data" #fileUpload required>
 
     <div class="file-upload">
 
-        {{fileName || "No file uploaded yet."}}
+        {{"Upload pictures here"}}
+        <!--{{fileName || "No file uploaded yet."}}-->
 
         <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
             <mat-icon>attach_file</mat-icon>
         </button>
 
     </div>
-
     <!-- 
         <file-upload requiredFileType="image/png"></file-upload>
     -->

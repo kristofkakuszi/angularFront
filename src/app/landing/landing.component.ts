@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HeroService } from '../hero.service';
 import { Router } from '@angular/router';
 
@@ -9,36 +9,47 @@ import { Router } from '@angular/router';
     templateUrl: 'landing.component.html',
     styleUrls: ['landing.component.css']
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit {
 
+    uploadForm: FormGroup;
+    submitted = false;
 
     fileName = '';
 
-    constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router) { }
+
+    constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router, private formBuilder: FormBuilder) { }
 
 
-    onLogout() {
-        console.warn(this.heroService.token);
-        this.heroService.token = "";
-        console.warn(this.heroService.token);
+    ngOnInit() {
+        this.uploadForm = this.formBuilder.group({
+            name: ['', Validators.required],
+        });
     }
 
+    get f() { return this.uploadForm.controls; }
+
+    upload() {
+
+    }
 
     onFileSelected(event) {
 
         const file: File = event.target.files[0];
 
+
         console.warn(this.heroService.token);
 
         if (file) {
 
-            this.fileName = file.name;
+            this.fileName = this.uploadForm.value.name;
 
             const formData = new FormData();
 
             formData.append("thumbnail", file);
 
             const upload$ = this.httpService.post("/onUpload", formData);
+
+            console.warn(this.uploadForm.value.name);
 
             upload$.subscribe(
                 (info: HttpResponse<any>) => {
@@ -53,4 +64,11 @@ export class LandingComponent {
             );
         }
     }
+
+    onLogout() {
+        console.warn(this.heroService.token);
+        this.heroService.token = "";
+        console.warn(this.heroService.token);
+    }
+
 }
