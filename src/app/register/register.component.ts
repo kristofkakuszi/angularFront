@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';                                                       //ez illetve
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";              //ez is kell ahhoz hogy mukodjon a post
-
 import { ConfirmedValidator } from './confirmed.validator';
-
 
 @Component({
     templateUrl: 'register.component.html'
@@ -32,8 +30,6 @@ export class RegisterComponent implements OnInit {
     onRegister() {
         this.submitted = true;
         //this.error = false;
-
-
         // stop here if form is invalid
         if (this.registerForm.invalid) {
             return;
@@ -44,6 +40,7 @@ export class RegisterComponent implements OnInit {
                 console.warn(status);
                 this.router.navigate(['login']);
                 alert('Sikeres Regisztárció!\n\n')
+                console.warn(this.registerForm.value)
             },
             (error: HttpErrorResponse) => {
                 alert("mar letezo felhasznalo");
@@ -51,45 +48,8 @@ export class RegisterComponent implements OnInit {
             }
         )
         //alert('Sikeres Regisztárció!\n\n')
-        console.warn(this.registerForm.value.username);
+        console.warn(this.registerForm.value);
     }
-    /*
-      this.httpService.post("/onRegister", this.registerForm.value).subscribe((status) => {
-            if (status.result == false) {
-                alert("letezik mar ilyen user");
-            }
-            else {
-                alert("rendben van nincs ilyen mehetsz");
-            }
-            console.warn(status);
-            this.router.navigate(['login']);
-        });
-        */
-
-
-
-
-    /*
-    registerForm = new FormGroup({
-
-        username: new FormControl(''),
-        inpPassword: new FormControl(''),
-        inpPassword1: new FormControl(''),
-    });
-    */
-    /*
-        onRegister() {
-            console.warn(this.registerForm.value)
-            this.httpService.post("/onRegister", this.registerForm.value).subscribe(
-                (status) => {
-                    console.warn(status);
-                    this.router.navigate(['login']);
-                }
-            )
-    
-        }
-        //idaig
-        */
 
 
 }

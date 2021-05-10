@@ -6,11 +6,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadModule } from 'ng2-file-upload';
-
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';           //posthoz kell
-
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-//import { initializeKeycloak } from '../app/utility/app.init'
 
 import { appRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
@@ -19,8 +15,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { LandingComponent } from './landing';
-import { AuthComponent } from './auth/auth.component';
-import { AuthInterceptor } from './auth/auth.interceptor';
+import { AuthInterceptor } from './auth-interceptor';
 import { HeroService } from './hero.service';
 
 @NgModule({
@@ -30,8 +25,6 @@ import { HeroService } from './hero.service';
     LoginComponent,
     RegisterComponent,
     LandingComponent,
-    AuthComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -42,8 +35,6 @@ import { HeroService } from './hero.service';
     MatIconModule,
     BrowserAnimationsModule,
     FileUploadModule
-
-    //KeycloakAngularModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } //példányosít

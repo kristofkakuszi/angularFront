@@ -6,31 +6,55 @@ import { Router } from '@angular/router';
 
 
 @Component({
+    selector: 'cdk-drag-drop-boundary-example',
     templateUrl: 'landing.component.html',
     styleUrls: ['landing.component.css']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent {
 
-    uploadForm: FormGroup;
-    submitted = false;
 
     fileName = '';
+
+    images = [];
+    myForm = new FormGroup({
+        name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+        file: new FormControl('', [Validators.required]),
+        fileSource: new FormControl('', [Validators.required])
+    });
+
 
 
     constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router, private formBuilder: FormBuilder) { }
 
 
-    ngOnInit() {
-        this.uploadForm = this.formBuilder.group({
-            name: ['', Validators.required],
-        });
+
+    get f() {
+        return this.myForm.controls;
     }
 
-    get f() { return this.uploadForm.controls; }
+    onFileChange(event) {
+        if (event.target.files && event.target.files[0]) {
+            var filesAmount = event.target.files.length;
+            for (let i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
 
-    upload() {
+                reader.onload = (event: any) => {
+                    console.log(event.target.result);
+                    this.images.push(event.target.result);
 
+                    this.myForm.patchValue({
+                        fileSource: this.images
+                    });
+                }
+
+                reader.readAsDataURL(event.target.files[i]);
+            }
+        }
     }
+
+
+
+
 
     onFileSelected(event) {
 
@@ -41,15 +65,13 @@ export class LandingComponent implements OnInit {
 
         if (file) {
 
-            this.fileName = this.uploadForm.value.name;
+            this.fileName = file.name;
 
             const formData = new FormData();
 
             formData.append("thumbnail", file);
 
             const upload$ = this.httpService.post("/onUpload", formData);
-
-            console.warn(this.uploadForm.value.name);
 
             upload$.subscribe(
                 (info: HttpResponse<any>) => {
