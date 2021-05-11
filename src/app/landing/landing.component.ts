@@ -31,31 +31,6 @@ export class LandingComponent {
     get f() {
         return this.myForm.controls;
     }
-
-    onFileChange(event) {
-        if (event.target.files && event.target.files[0]) {
-            var filesAmount = event.target.files.length;
-            for (let i = 0; i < filesAmount; i++) {
-                var reader = new FileReader();
-
-                reader.onload = (event: any) => {
-                    console.log(event.target.result);
-                    this.images.push(event.target.result);
-
-                    this.myForm.patchValue({
-                        fileSource: this.images
-                    });
-                }
-
-                reader.readAsDataURL(event.target.files[i]);
-            }
-        }
-    }
-
-
-
-
-
     onFileSelected(event) {
 
         const file: File = event.target.files[0];
@@ -91,6 +66,7 @@ export class LandingComponent {
         console.warn(this.heroService.token);
         this.heroService.token = "";
         console.warn(this.heroService.token);
+        this.router.navigate(['./home']);
     }
 
 }
