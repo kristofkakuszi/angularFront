@@ -50,7 +50,7 @@ export class LandingComponent {
 
             upload$.subscribe(
                 (info: HttpResponse<any>) => {
-                    alert("Done");
+                    alert("Sikeres kepfeltoltes");
                 },
                 (error: HttpErrorResponse) => {
                     if (error.status == 401) {
@@ -63,10 +63,10 @@ export class LandingComponent {
     }
 
     onLogout() {
-        console.warn(this.heroService.token);
         this.heroService.token = "";
-        console.warn(this.heroService.token);
+        console.warn("angular feluleten a token" + this.heroService.token);
         this.router.navigate(['./home']);
+        alert("Sikeres kijelentkezés");
     }
 
 }
