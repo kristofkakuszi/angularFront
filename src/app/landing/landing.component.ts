@@ -12,22 +12,24 @@ export class LandingComponent {
 
     fileName = '';
 
-    images = [];
-    myForm = new FormGroup({
-        name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-        file: new FormControl('', [Validators.required]),
-        fileSource: new FormControl('', [Validators.required])
-    });
-
     constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router, private formBuilder: FormBuilder) { }
 
-    get f() {
-        return this.myForm.controls;
+
+    validateFile(name: String) {
+        var ext = name.substring(name.lastIndexOf('.') + 1);
+        if (ext.toLowerCase() == 'png' || ext.toLowerCase() == 'jpg' || ext.toLowerCase() == 'jpeg') {
+            return true;
+        }
+        else {
+            alert("file format is wrong");
+            return false;
+
+        }
     }
+
     onFileSelected(event) {
 
         const file: File = event.target.files[0];
-
 
         console.warn(this.heroService.token);
 
@@ -35,23 +37,25 @@ export class LandingComponent {
 
             this.fileName = file.name;
 
-            const formData = new FormData();
+            if (this.validateFile(this.fileName)) {
+                const formData = new FormData();
 
-            formData.append("thumbnail", file);
+                formData.append("thumbnail", file);
 
-            const upload$ = this.httpService.post("/onUpload", formData);
+                const upload$ = this.httpService.post("/onUpload", formData);
 
-            upload$.subscribe(
-                (info: HttpResponse<any>) => {
-                    alert("Sikeres kepfeltoltes");
-                },
-                (error: HttpErrorResponse) => {
-                    if (error.status == 401) {
-                        this.heroService.token = "";
-                        this.router.navigate(['landing']);
+                upload$.subscribe(
+                    (info: HttpResponse<any>) => {
+                        alert("Sikeres kepfeltoltes");
+                    },
+                    (error: HttpErrorResponse) => {
+                        if (error.status == 401) {
+                            this.heroService.token = "";
+                            this.router.navigate(['landing']);
+                        }
                     }
-                }
-            );
+                );
+            }
         }
     }
 

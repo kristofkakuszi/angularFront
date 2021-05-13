@@ -2,14 +2,16 @@
 
     <h2>Picture upload</h2>
 
+    <pre></pre>
 
-    <input type="file" class="file-input" name="file" multiple onchange="console.log(event.target.files)"
+    <input type="file" class="file-input" name="file" id=fileInput multiple onchange="console.log(event.target.files)"
         (change)="onFileSelected($event)" accept='image/*' enctype="multipart/form-data" #fileUpload required>
 
     <div class="file-upload">
 
         {{"Upload pictures here"}}
         <!--{{fileName || "No file uploaded yet."}}-->
+
 
         <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
             <mat-icon>attach_file</mat-icon>
@@ -28,8 +30,8 @@
         <div class="col">
             <h4 id="cim">Képek</h4>
             <div class="zoom">
-                <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br />
                 <img id="logo" src="" alt="" />
+                <!--<img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br />-->
             </div>
         </div>
         <div class="col">
