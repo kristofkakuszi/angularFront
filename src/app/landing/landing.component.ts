@@ -4,14 +4,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { HeroService } from '../hero.service';
 import { Router } from '@angular/router';
 
-
 @Component({
-    selector: 'cdk-drag-drop-boundary-example',
     templateUrl: 'landing.component.html',
     styleUrls: ['landing.component.css']
 })
 export class LandingComponent {
-
 
     fileName = '';
 
@@ -22,11 +19,7 @@ export class LandingComponent {
         fileSource: new FormControl('', [Validators.required])
     });
 
-
-
     constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router, private formBuilder: FormBuilder) { }
-
-
 
     get f() {
         return this.myForm.controls;
@@ -63,6 +56,7 @@ export class LandingComponent {
     }
 
     onLogout() {
+        console.warn("angular feluleten a token" + this.heroService.token);
         this.heroService.token = "";
         console.warn("angular feluleten a token" + this.heroService.token);
         this.router.navigate(['./home']);

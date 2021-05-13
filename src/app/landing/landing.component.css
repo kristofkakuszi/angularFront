@@ -1,55 +1,19 @@
-
 .file-input {
     display: none;
   }
-
 h4{
   text-align: center;
 }
 .gallery{
   margin-top: 10rem;
 }
-/* Create three equal columns that floats next to each other */
 .column {
   float: left;
   width: 33.33%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
 }
-
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
-
-
-
-
-
-
-
-
-
-
-/*
-input {
-  width: 20rem;
-}
-*/
-/*
-.zoom {
-  background-color: green;
-  transition: transform .2s;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
-}
-.zoom:hover {
-  transform: scale(2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-*/

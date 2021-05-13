@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class HeroService {
 
   private _token = "";
+  private userImages;
 
   constructor() { }
 

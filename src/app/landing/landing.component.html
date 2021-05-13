@@ -2,11 +2,6 @@
 
     <h2>Picture upload</h2>
 
-    <!--
-    <label for="text">Name:</label><br>
-    <input type="text" id="name" [(ngModel)]="fileName" />
-    <input type="text" id="name" [(ngModel)]="fileName" />
-    -->
 
     <input type="file" class="file-input" name="file" multiple onchange="console.log(event.target.files)"
         (change)="onFileSelected($event)" accept='image/*' enctype="multipart/form-data" #fileUpload required>
@@ -21,44 +16,11 @@
         </button>
 
     </div>
-    <!-- 
-        <file-upload requiredFileType="image/png"></file-upload>
-    -->
 
-    <!-- 
-    <form [formGroup]="myForm">
-
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input formControlName="name" id="name" type="text" class="form-control">
-            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-                <div *ngIf="f.name.errors.required">Name is required.</div>
-                <div *ngIf="f.name.errors.minlength">Name should be 3 character.</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="file">File</label>
-            <input formControlName="file" id="file" accept='image/*' type="file" class="form-control" multiple=""
-                (change)="onFileChange($event)">
-            <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-                <div *ngIf="f.file.errors.required">File is required.</div>
-            </div>
-        </div>
-
-        <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br />
-
-        <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
-    -->
 
     <div class="logout">
         <button (click)="onLogout()" type="button" class="btn btn-info btn-rounded">Log out</button>
     </div>
-
-    <!--
-        logout gombra function
-    -->
 </div>
 
 <div class="gallery">
@@ -67,6 +29,7 @@
             <h4 id="cim">Képek</h4>
             <div class="zoom">
                 <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br />
+                <img id="logo" src="" alt="" />
             </div>
         </div>
         <div class="col">
