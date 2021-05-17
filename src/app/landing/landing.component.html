@@ -4,8 +4,7 @@
 
     <pre></pre>
 
-    <input type="file" class="file-input" name="file" id=fileInput multiple onchange="console.log(event.target.files)"
-        (change)="onFileSelected($event)" accept='image/*' enctype="multipart/form-data" #fileUpload required>
+    <input type="file" class="file-input" name="file" id=fileInput multiple onchange="console.log(event.target.files)" (change)="onFileSelected($event)" accept='image/*' enctype="multipart/form-data" #fileUpload required>
 
     <div class="file-upload">
 
@@ -26,22 +25,23 @@
 </div>
 
 <div class="gallery">
+    <!--<div class="container">-->
     <div class="row">
-        <div class="col">
+        <div class="col-3">
             <h4 id="cim">Képek</h4>
             <div class="zoom">
-                <img id="logo" src="" alt="" />
                 <!--<img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br />-->
             </div>
         </div>
-        <div class="col">
+        <div class="col-3">
             <h4 id="cim">Arcok</h4>
         </div>
-        <div class="col">
+        <div class="col-3">
             <h4 id="cim">Rendszámok</h4>
         </div>
-        <div class="col">
+        <div class="col-3">
             <h4 id="cim">Szövegek</h4>
         </div>
     </div>
+    <!--</div>-->
 </div>

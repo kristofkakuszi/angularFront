@@ -2,16 +2,33 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>App</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>App</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/assets/imagePicker/image-picker.js"></script>
 </head>
 
 <body>
-  <app-root></app-root>
+    <app-root></app-root>
+    <!--
+    <script>
+        $("img").imgCheckbox({
+            onload: function() {
+                // Do something fantastic!
+            },
+            onclick: function(el) {
+                var isChecked = el.hasClass("imgChked"),
+                    imgEl = el.children()[0]; // the img element
+
+                console.log(imgEl.name + " is now " + (isChecked ? "checked" : "not-checked") + "!");
+            }
+        });
+    </script>
+    -->
 </body>
 
 </html>

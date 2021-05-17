@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeroService } from '../hero.service';
 
 @Component({
     templateUrl: 'home.component.html',
@@ -7,6 +8,6 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private heroService: HeroService) { }
 
 }
