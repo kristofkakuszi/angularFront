@@ -11,8 +11,28 @@ import { Router } from '@angular/router';
 export class LandingComponent {
 
     fileName = '';
+    images = [];
 
-    constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router, private formBuilder: FormBuilder) { }
+    constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router, private formBuilder: FormBuilder) {
+        const getImages$ = this.httpService.get("/getImages");
+        getImages$.subscribe(
+            (info: HttpResponse<any>) => {
+                alert("sikeres képlekérés");
+                console.log(info);
+                this.images = info["result"];
+                console.log(this.images)
+            },
+            (error: HttpErrorResponse) => {
+                alert("Sikertelen képlekérés");
+                console.error(error);
+                if (error.status == 401) {
+                    this.heroService.token = "";
+                    this.router.navigate(['landing']);
+                }
+
+            }
+        );
+    }
 
 
     validateFile(name: String) {
@@ -66,6 +86,18 @@ export class LandingComponent {
         console.warn("angular feluleten a token" + this.heroService.token);
         this.router.navigate(['./home']);
         alert("Sikeres kijelentkezés");
+    }
+
+    public getFaceList() {
+        return this.images.filter(i => i["faceFound"]);
+    }
+
+    public getTextList() {
+        return this.images.filter(i => i["textFound"]);
+    }
+
+    public getPlateList() {
+        return this.images.filter(i => i["plateFound"]);
     }
 
 }

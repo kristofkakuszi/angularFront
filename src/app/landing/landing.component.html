@@ -24,23 +24,58 @@
     </div>
 </div>
 
+<!--
+<div>
+    <li *ngFor="let image of images">
+        <h3>{{image.id}}</h3>
+        <p>{{image.name}}</p>
+        <p>{{image.fp}}</p>
+        <p>{{image.owner_id}}</p>
+        <p>{{image.faceFound}}</p>
+        <p>{{image.textFound}}</p>
+        <p>{{image.plateFound}}</p>
+        <img src="/getImage?id={{image.id}}&token={{heroService.token}}">
+
+    </li>
+</div>
+-->
+
 <div class="gallery">
     <!--<div class="container">-->
     <div class="row">
         <div class="col-3">
             <h4 id="cim">Képek</h4>
-            <div class="zoom">
-                <!--<img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br />-->
-            </div>
+            <li *ngFor="let image of images">
+                <!--
+                <h3>{{image.id}}</h3>
+                <p>{{image.name}}</p>
+                <p>{{image.fp}}</p>
+                <p>{{image.owner_id}}</p>
+                <p>{{image.faceFound}}</p>
+                <p>{{image.textFound}}</p>
+                <p>{{image.plateFound}}</p>
+                -->
+                <img class="rounded-circle z-depth-2" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+
+            </li>
         </div>
         <div class="col-3">
             <h4 id="cim">Arcok</h4>
+            <li *ngFor="let image of getFaceList()">
+                <img class="rounded-circle z-depth-2" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+            </li>
         </div>
         <div class="col-3">
             <h4 id="cim">Rendszámok</h4>
+            <li *ngFor="let image of getPlateList()">
+                <img class="rounded-circle z-depth-2" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+            </li>
         </div>
         <div class="col-3">
             <h4 id="cim">Szövegek</h4>
+            <li *ngFor="let image of getTextList()">
+                <img class="rounded-circle z-depth-2" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+            </li>
         </div>
     </div>
     <!--</div>-->

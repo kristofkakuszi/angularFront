@@ -89,3 +89,8 @@ label img {
     box-shadow: 0 0 5px #333;
     z-index: -1;
 }
+
+img {
+    height: 200px;
+    width: 200px;
+}
