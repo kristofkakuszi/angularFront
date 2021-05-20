@@ -4,6 +4,7 @@ import { Router } from '@angular/router';                                       
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";              //ez is kell ahhoz hogy mukodjon a post
 import { ConfirmedValidator } from './confirmed.validator';
 
+
 @Component({
     templateUrl: 'register.component.html'
 })
@@ -17,15 +18,17 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            username: ['', Validators.required],
+            username: ['', Validators.required,],
             inpPassword: ['', Validators.required,], //inpPassword: ['', [Validators.required, Validators.minLength(6)]],
-            inpPassword1: ['', Validators.required]
+            inpPassword1: ['', Validators.required,]
         }, {
             validator: ConfirmedValidator('inpPassword', 'inpPassword1')
         });
     }
 
     get f() { return this.registerForm.controls; }
+
+
 
     onRegister() {
         this.submitted = true;

@@ -12,6 +12,7 @@ export class LandingComponent {
 
     fileName = '';
     images = [];
+    selectedImages = [];
 
     constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router, private formBuilder: FormBuilder) {
         const getImages$ = this.httpService.get("/getImages");
@@ -102,6 +103,23 @@ export class LandingComponent {
 
     public getNothingList() {
         return this.images.filter(i => i["nothingFound"]);
+    }
+
+    addImage(image) {
+        if (!this.containsImage(image)) {
+            this.selectedImages.push(image);
+            console.log(this.selectedImages);
+        } else {
+            this.selectedImages.forEach((element, index) => {
+                if (element == image) {
+                    this.selectedImages.splice(index, 1);
+                }
+            })
+        }
+    }
+
+    containsImage(image) {
+        return this.selectedImages.includes(image);
     }
 
 }

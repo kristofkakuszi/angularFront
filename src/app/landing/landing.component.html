@@ -50,32 +50,30 @@
         <div class="row">
             <div class="col-sm">
                 <h4 id="cim">Képek</h4>
-
-
                 <li *ngFor="let image of getNothingList()">
-                    <img class="rounded-circle z-depth-2" src="/getImage?id={{image.id}}&token={{heroService.token}}">
-
-
+                    <img class="rounded-circle z-depth-2" (click)="addImage(image)" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+                    <span *ngIf="containsImage(image)">✔</span>
                 </li>
             </div>
             <div class="col-sm">
                 <h4 id="cim">Arcok</h4>
-
-                <!--<img class="rounded-circle" src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png">-->
                 <li *ngFor="let image of getFaceList()">
-                    <img class="rounded-circle z-depth-2" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+                    <img class="rounded-circle z-depth-2" (click)="addImage(image)" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+                    <span *ngIf="containsImage(image)">✔</span>
                 </li>
             </div>
             <div class="col-sm">
                 <h4 id="cim">Rendszámok</h4>
                 <li *ngFor="let image of getPlateList()">
-                    <img class="rounded-circle z-depth-2" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+                    <img class="rounded-circle z-depth-2" (click)="addImage(image)" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+                    <span *ngIf="containsImage(image)">✔</span>
                 </li>
             </div>
             <div class="col-sm">
                 <h4 id="cim">Szövegek</h4>
                 <li *ngFor="let image of getTextList()">
-                    <img class="rounded-circle z-depth-2" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+                    <img class="rounded-circle z-depth-2" (click)="addImage(image)" src="/getImage?id={{image.id}}&token={{heroService.token}}">
+                    <span *ngIf="containsImage(image)">✔</span>
                 </li>
             </div>
         </div>
