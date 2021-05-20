@@ -1,3 +1,10 @@
+body {
+    background: rgb(63, 94, 251) !important;
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .file-input {
     display: none;
 }
@@ -93,4 +100,92 @@ label img {
 img {
     height: 200px;
     width: 200px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-btn {
+    background-image: linear-gradient(to right, #24C6DC 0%, #514A9D 51%, #24C6DC 100%)
+}
+
+.upload-btn {
+    margin: 7px;
+    padding: 10px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: 4px;
+}
+
+.upload-btn:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.rounded-circle {
+    padding: 10px;
+}
+
+.col-sm {
+    text-align: center;
+}
+
+.logout-btn {
+    background-image: linear-gradient(to right, #24C6DC 0%, #514A9D 51%, #24C6DC 100%)
+}
+
+.logout-btn {
+    margin: 7px;
+    padding: 10px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: 4px;
+}
+
+.logout-btn:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.download-btn {
+    background-image: linear-gradient(to right, #24C6DC 0%, #514A9D 51%, #24C6DC 100%)
+}
+
+.download-btn {
+    margin: 10px;
+    padding: 10px 25px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: 4px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    margin-top: 15rem;
+}
+
+.download-btn:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
 }

@@ -1,62 +1,95 @@
+html {
+    height: 100%;
+}
 
-  body {
-    font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-    sans-serif;
-  background-color: white;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh; 
+body {
+    font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #4158D0;
+    background-image: linear-gradient(0deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    background-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .brand-wrapper {
-  margin-bottom: 19px; }
-  .brand-wrapper .logo {
-    height: 37px; }
+    margin-bottom: 19px;
+}
+
+.brand-wrapper .logo {
+    height: 37px;
+}
 
 .login-card {
-  border: 0;
-  border-radius: 27.5px;
-  box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
-  overflow: hidden; 
+    border: 0;
+    border-radius: 27.5px;
+    box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
+    overflow: hidden;
 }
-  .login-card-img {
+
+.login-card-img {
     border-radius: 0;
     position: absolute;
     width: 100%;
     height: 100%;
     -o-object-fit: cover;
-       object-fit: cover; }
-  .login-card .card-body {
-    padding: 85px 60px 60px; }
-    @media (max-width: 422px) {
-      .login-card .card-body {
-        padding: 35px 24px; } }
-  .login-card-description {
+    object-fit: cover;
+}
+
+.login-card .card-body {
+    padding: 85px 60px 60px;
+}
+
+@media (max-width: 422px) {
+    .login-card .card-body {
+        padding: 35px 24px;
+    }
+}
+
+.login-card-description {
     font-size: 25px;
     color: #000;
     font-weight: normal;
-    margin-bottom: 23px; }
-  .login-card form {
-    max-width: 326px; }
-  .login-card .form-control {
+    margin-bottom: 23px;
+}
+
+.login-card form {
+    max-width: 326px;
+}
+
+.login-card .form-control {
     border: 1px solid #d5dae2;
     padding: 15px 25px;
     margin-bottom: 20px;
     min-height: 45px;
     font-size: 13px;
     line-height: 15;
-    font-weight: normal; }
-    .login-card .form-control::-webkit-input-placeholder {
-      color: #919aa3; }
-    .login-card .form-control::-moz-placeholder {
-      color: #919aa3; }
-    .login-card .form-control:-ms-input-placeholder {
-      color: #919aa3; }
-    .login-card .form-control::-ms-input-placeholder {
-      color: #919aa3; }
-    .login-card .form-control::placeholder {
-      color: #919aa3; }
-  .login-card .login-btn {
+    font-weight: normal;
+}
+
+.login-card .form-control::-webkit-input-placeholder {
+    color: #919aa3;
+}
+
+.login-card .form-control::-moz-placeholder {
+    color: #919aa3;
+}
+
+.login-card .form-control:-ms-input-placeholder {
+    color: #919aa3;
+}
+
+.login-card .form-control::-ms-input-placeholder {
+    color: #919aa3;
+}
+
+.login-card .form-control::placeholder {
+    color: #919aa3;
+}
+
+.login-card .login-btn {
     padding: 13px 20px 12px;
     background-color: #000;
     border-radius: 4px;
@@ -64,66 +97,103 @@
     font-weight: bold;
     line-height: 20px;
     color: #fff;
-    margin-bottom: 24px; }
-    .login-card .login-btn:hover {
-      border: 1px solid #000;
-      background-color: transparent;
-      color: #000; }
-  .login-card .forgot-password-link {
+    margin-bottom: 24px;
+}
+
+.login-card .login-btn:hover {
+    border: 1px solid #000;
+    background-color: transparent;
+    color: #000;
+}
+
+.login-card .forgot-password-link {
     font-size: 14px;
     color: #919aa3;
-    margin-bottom: 12px; }
+    margin-bottom: 12px;
+}
 
-  .login-card-footer-text {
+.login-card-footer-text {
     font-size: 12px;
     color: #0d2366;
-    margin-bottom: 10px; 
-  }
+    margin-bottom: 10px;
+}
 
-    @media (max-width: 767px) {
-      .login-card-footer-text {
-        margin-bottom: 24px; } }
-  .login-card-footer-nav a {
+@media (max-width: 767px) {
+    .login-card-footer-text {
+        margin-bottom: 24px;
+    }
+}
+
+.login-card-footer-nav a {
     font-size: 14px;
-    color: #919aa3; }
+    color: #919aa3;
+}
+
 
 /*# sourceMappingURL=login.css.map */
-.homepage{
-  font-size: 4rem;
-  font-weight: 100;
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 50vh; /* These two lines are counted as one :-)       */
 
-  display: flex;
-  align-items: center;
-  
+.homepage {
+    font-size: 4rem;
+    font-weight: 100;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    left: 40%;
 }
+
+@media (max-width:500px) {
+    .homepage {
+        font-size: 2rem;
+        left: 40%;
+    }
+}
+
 .homepage a {
-  color:black;
-
-  transition: all 0.25s linear;
-}
-.homepage a:hover{
-  text-decoration: none;
-  border-bottom: 3px solid #ff8cbc;
+    color: black;
+    transition: all 0.25s linear;
 }
 
+.homepage a:hover {
+    text-decoration: none;
+    border-bottom: 3px solid #ff8cbc;
+}
 
 .homepage a:hover:before {
-  transform: scale(1);
+    transform: scale(1);
 }
 
-.doboz{
-  width: auto;
-  height: auto;
-  padding-left: 20px;
-  padding-top: 20px;
-  position: relative;
-
+.doboz {
+    width: auto;
+    height: auto;
+    padding-left: 20px;
+    padding-top: 20px;
+    position: relative;
 }
-.logout{
-  position: absolute;
-  top: 20px;
-  right: 0;
-  padding-right: 20px;
- }              
+
+.logout {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding-right: 20px;
+}
+
+.loginKep {
+    width: 700px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+@media (max-width:1500px) {
+    .loginKep {
+        width: 400px;
+        z-index: -1;
+    }
+}
+
+@media (max-width:500px) {
+    .loginKep {
+        display: none;
+    }
+}

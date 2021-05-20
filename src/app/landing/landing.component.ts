@@ -100,4 +100,8 @@ export class LandingComponent {
         return this.images.filter(i => i["plateFound"]);
     }
 
+    public getNothingList() {
+        return this.images.filter(i => i["nothingFound"]);
+    }
+
 }
