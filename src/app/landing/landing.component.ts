@@ -12,7 +12,7 @@ export class LandingComponent {
 
     fileName = '';
     images = [];
-    selectedImages = [];
+    selectedImages = []; //ezekbe lesznek amiket kivalasztottam
 
     constructor(private httpService: HttpClient, private heroService: HeroService, private router: Router, private formBuilder: FormBuilder) {
         const getImages$ = this.httpService.get("/getImages");
@@ -34,6 +34,30 @@ export class LandingComponent {
             }
         );
     }
+
+    /*
+    downImg(){
+        this.httpService.post("/downloadImages", this.selectedImages).subscribe(
+            (info: HttpResponse<any>) => {
+                console.log(info);
+                this.selectedImages = info["result"];
+                console.log(this.selectedImages)
+            },
+            (error: HttpErrorResponse) => {
+                console.error(error);
+                if (error.status == 401) {
+                    this.heroService.token = "";
+                    this.router.navigate(['landing']);
+                }
+
+            }
+        )
+    }
+    */
+
+
+
+
 
 
     validateFile(name: String) {
@@ -104,6 +128,9 @@ export class LandingComponent {
     public getNothingList() {
         return this.images.filter(i => i["nothingFound"]);
     }
+
+
+    getId = this.images.filter(i => i["id"]);
 
     addImage(image) {
         if (!this.containsImage(image)) {
