@@ -18,9 +18,13 @@ export class LandingComponent {
         const getImages$ = this.httpService.get("/getImages");
         getImages$.subscribe(
             (info: HttpResponse<any>) => {
+
                 alert("sikeres képlekérés");
                 console.log(info);
                 this.images = info["result"];
+                setTimeout(() => {
+                    this.images = this.images;
+                }, 1000);
                 console.log(this.images)
             },
             (error: HttpErrorResponse) => {
@@ -28,7 +32,7 @@ export class LandingComponent {
                 console.error(error);
                 if (error.status == 401) {
                     this.heroService.token = "";
-                    this.router.navigate(['landing']);
+                    this.router.navigate(['./home']);
                 }
 
             }
