@@ -39,29 +39,46 @@ export class LandingComponent {
         );
     }
 
-    /*
-    downImg(){
-        this.httpService.post("/downloadImages", this.selectedImages).subscribe(
+    addImage(image) {
+        if (!this.containsImage(image)) {
+            this.selectedImages.push(image);
+            console.log(this.selectedImages);
+        } else {
+            this.selectedImages.forEach((element, index) => {
+                if (element == image) {
+                    this.selectedImages.splice(index, 1);
+                }
+            })
+        }
+    }
+
+    containsImage(image) {
+        return this.selectedImages.includes(image);
+    }
+
+
+    onDownload(addImage) {
+        const postImg$ = this.httpService.post("/downloadImages", this.selectedImages);
+        postImg$.subscribe(
             (info: HttpResponse<any>) => {
                 console.log(info);
                 this.selectedImages = info["result"];
-                console.log(this.selectedImages)
+                console.log(this.selectedImages);
+                console.log("vmi info jo agban");
+                alert("sikeres letoltes");
             },
             (error: HttpErrorResponse) => {
                 console.error(error);
                 if (error.status == 401) {
-                    this.heroService.token = "";
+                    //this.heroService.token = "";
                     this.router.navigate(['landing']);
+                    console.log("vmi info rossz agban");
+                    alert("nem futott bele");
                 }
 
             }
         )
     }
-    */
-
-
-
-
 
 
     validateFile(name: String) {
@@ -136,21 +153,6 @@ export class LandingComponent {
 
     getId = this.images.filter(i => i["id"]);
 
-    addImage(image) {
-        if (!this.containsImage(image)) {
-            this.selectedImages.push(image);
-            console.log(this.selectedImages);
-        } else {
-            this.selectedImages.forEach((element, index) => {
-                if (element == image) {
-                    this.selectedImages.splice(index, 1);
-                }
-            })
-        }
-    }
 
-    containsImage(image) {
-        return this.selectedImages.includes(image);
-    }
 
 }

@@ -23,8 +23,7 @@
         <button (click)="onLogout()" type="button" class="logout-btn">Log out</button>
     </div>
 
-    <button type="button" class="download-btn">Download</button>
-    <!--<button type="button" click()="downImg()" class="download-btn">Download</button>-->
+    <button (click)="onDownload(addImage)" type="button" class="download-btn">Download</button>
 
 </div>
 
@@ -51,29 +50,30 @@
             <div class="col-sm">
                 <h4 id="cim">Képek</h4>
                 <li *ngFor="let image of getNothingList()">
-                    <img class="rounded-circle z-depth-2" (click)="addImage(image)" src="/getImage?id={{image.id}}&token={{heroService.token}}">
-                    <span *ngIf="containsImage(image)">✔</span>
+                    <img class="rounded-circle z-depth-2" src="/getImage?id={{image.id}}&token={{heroService.token}}" (click)="addImage(image)">
+                    <!--image.id-->
+                    <span *ngIf=" containsImage(image) ">✔</span>
                 </li>
             </div>
-            <div class="col-sm">
-                <h4 id="cim">Arcok</h4>
-                <li *ngFor="let image of getFaceList()">
-                    <img class="rounded-circle z-depth-2" (click)="addImage(image)" src="/getImage?id={{image.id}}&token={{heroService.token}}">
-                    <span *ngIf="containsImage(image)">✔</span>
+            <div class="col-sm ">
+                <h4 id="cim ">Arcok</h4>
+                <li *ngFor="let image of getFaceList() ">
+                    <img class="rounded-circle z-depth-2 " src="/getImage?id={{image.id}}&token={{heroService.token}} " (click)="addImage(image) ">
+                    <span *ngIf="containsImage(image) ">✔</span>
                 </li>
             </div>
-            <div class="col-sm">
-                <h4 id="cim">Rendszámok</h4>
-                <li *ngFor="let image of getPlateList()">
-                    <img class="rounded-circle z-depth-2" (click)="addImage(image)" src="/getImage?id={{image.id}}&token={{heroService.token}}">
-                    <span *ngIf="containsImage(image)">✔</span>
+            <div class="col-sm ">
+                <h4 id="cim ">Rendszámok</h4>
+                <li *ngFor="let image of getPlateList() ">
+                    <img class="rounded-circle z-depth-2 " src="/getImage?id={{image.id}}&token={{heroService.token}} " (click)="addImage(image) ">
+                    <span *ngIf="containsImage(image) ">✔</span>
                 </li>
             </div>
-            <div class="col-sm">
-                <h4 id="cim">Szövegek</h4>
-                <li *ngFor="let image of getTextList()">
-                    <img class="rounded-circle z-depth-2" (click)="addImage(image)" src="/getImage?id={{image.id}}&token={{heroService.token}}">
-                    <span *ngIf="containsImage(image)">✔</span>
+            <div class="col-sm ">
+                <h4 id="cim ">Szövegek</h4>
+                <li *ngFor="let image of getTextList() ">
+                    <img class="rounded-circle z-depth-2 " src="/getImage?id={{image.id}}&token={{heroService.token}} " (click)="addImage(image) ">
+                    <span *ngIf="containsImage(image) ">✔</span>
                 </li>
             </div>
         </div>
