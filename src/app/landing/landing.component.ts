@@ -57,13 +57,11 @@ export class LandingComponent {
     }
 
 
-    onDownload(addImage) {
-        const postImg$ = this.httpService.post("/downloadImages", this.selectedImages);
+    onDownload(selectedImages) {
+        const postImg$ = this.httpService.post("/downloadImages", selectedImages);
         postImg$.subscribe(
             (info: HttpResponse<any>) => {
                 console.log(info);
-                this.selectedImages = info["result"];
-                console.log(this.selectedImages);
                 console.log("vmi info jo agban");
                 alert("sikeres letoltes");
             },
@@ -89,7 +87,6 @@ export class LandingComponent {
         else {
             alert("file format is wrong");
             return false;
-
         }
     }
 
