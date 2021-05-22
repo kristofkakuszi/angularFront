@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HeroService } from '../hero.service';
 import { Router } from '@angular/router';
+import * as fileSaver from 'file-saver';
 
 @Component({
     templateUrl: 'landing.component.html',
@@ -25,7 +26,7 @@ export class LandingComponent {
                 setTimeout(() => {
                     this.images = this.images;
                 }, 1000);
-                console.log(this.images)
+                console.log(this.images);
             },
             (error: HttpErrorResponse) => {
                 alert("Sikertelen képlekérés");
@@ -58,16 +59,18 @@ export class LandingComponent {
     }
 
 
-    onDownload(selectedImages) { //kuldenie kellene postba de nevvel amivel le tudom kerni
-        const postImg$ = this.httpService.post("/downloadImages", selectedImages);
+    onDownload() { //kuldenie kellene postba de nevvel amivel le tudom kerni
+        console.log(this.selectedImages)
+        const postImg$ = this.httpService.post("/downloadImages", this.selectedImages, { responseType: 'blob' });
         postImg$.subscribe(
-            (info: HttpResponse<any>) => {
-                console.log(info);
-                console.log("vmi info jo agban");
+            (response: any) => {
+                let blob: any = new Blob([response]);
+                const url = window.URL.createObjectURL(blob);
+                fileSaver.saveAs(blob, 'picture.zip');
                 alert("sikeres letoltes");
             },
             (error: HttpErrorResponse) => {
-                console.error(error);
+                console.log(error)
                 if (error.status == 401) {
                     //this.heroService.token = "";
                     this.router.navigate(['landing']);
