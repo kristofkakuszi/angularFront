@@ -39,13 +39,14 @@ export class LandingComponent {
         );
     }
 
-    addImage(image) {
-        if (!this.containsImage(image)) {
-            this.selectedImages.push(image);
+    addImage(image) { //ez a fgvnek egy idt kellen varnia de az nem sikerult
+        if (!this.containsImage(image["id"])) {
+            this.selectedImages.push(image["id"]);
             console.log(this.selectedImages);
+            console.log(typeof this.selectedImages);
         } else {
             this.selectedImages.forEach((element, index) => {
-                if (element == image) {
+                if (element == image["id"]) {
                     this.selectedImages.splice(index, 1);
                 }
             })
@@ -53,11 +54,11 @@ export class LandingComponent {
     }
 
     containsImage(image) {
-        return this.selectedImages.includes(image);
+        return this.selectedImages.includes(image["id"]);
     }
 
 
-    onDownload(selectedImages) {
+    onDownload(selectedImages) { //kuldenie kellene postba de nevvel amivel le tudom kerni
         const postImg$ = this.httpService.post("/downloadImages", selectedImages);
         postImg$.subscribe(
             (info: HttpResponse<any>) => {
@@ -73,7 +74,6 @@ export class LandingComponent {
                     console.log("vmi info rossz agban");
                     alert("nem futott bele");
                 }
-
             }
         )
     }
